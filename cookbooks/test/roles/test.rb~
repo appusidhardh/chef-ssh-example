@@ -1,0 +1,4 @@
+name "vagrant_stage"
+run_list(
+		"recipe[test]"
+)

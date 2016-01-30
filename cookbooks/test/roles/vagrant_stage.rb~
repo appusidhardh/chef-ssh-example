@@ -1,0 +1,4 @@
+name "vagrant_test_1"
+run_list(
+	"recipe[vagrant_test_1]"
+)

@@ -1,0 +1,32 @@
+#
+# Cookbook Name:: test
+# Recipe:: default
+
+execute 'makind home' do 
+  command "mkdir -p /home/appu"
+end
+execute 'makind .ssh dir' do 
+  command "mkdir -p /home/appu/.ssh"
+end
+user 'appu' do
+ # comment 'A random user'
+  home '/home/appu'
+  shell '/bin/bash'
+ password '$1$pBbWB/HB$NtLypftsWCwck75bayMY01'
+end
+#execute 'removing passwd' do 
+#  command "passwd -d appu"
+#end
+execute 'adding new public key' do
+  command 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC00garL2IF765a8pbUAZmh7jxuiCsF68sbUSZ+WcBedUvRAhrUu6AjzbN6n/yCJpHmpKh0mTkb+Kgiz+EbMQcLByBUwftH+3TzxUXT8ZNOh9l0N1bogjjNvRTFriTBEGM2pFxTWT/616+dLqWDTAPZSTkB1llu3SvBA4CDh/u4Mmyg+vJ+IY/NOHpfU6yZIhM6M7ClaMha1eW5PG+GAo++r5xfMMtEVpbVjcUbcG6ME9ENTC9c1H4qgsflglqIXupq3oAG5FVNyMYU1qOlWm76Hjx83ZtzgDMM7mlrGm9tcHoXkXchEQwYDxzJePw+yqt0lBoggOyF4hoaJ8Nszm37 guest2@stsid">/home/appu/.ssh/authorized_keys'
+end
+execute 'removing passowrd prompt' do
+  command "sed -i  '/PermitEmptyPasswords/c\PermitEmptyPasswords yes' /etc/ssh/sshd_config"
+end
+#execute 'removing passowrd prompt' do
+#  command "sed -i  '/#PasswordAuthentication/c\PasswordAuthentication no' /etc/ssh/sshd_config"
+#end
+execute 'restart sshd service' do
+  command "service ssh restart"
+end
+
