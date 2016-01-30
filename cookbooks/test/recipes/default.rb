@@ -18,7 +18,7 @@ end
 #  command "passwd -d appu"
 #end
 execute 'adding new public key' do
-  command 'echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7a8164RaPK3ts2S6KeU7Bhbbs6J8iQQQ9ahoZqOKK+TjEDaYSxBJCGLw8A9UsYZVCsYYUKnvGxDQYAYRJLcokR114dVCxF2z50llkO9rV54iCuzzHVMfKh14YQLTRuJCLedWC1qaqN16L+PMAEGJ/57oZtWjqbeMBLlBQJL7h+5LVdSH2AO+zIYDhhXbCq8Idtw5ywIrywBWxkRDCUXI5hyiVVhMn0b7sU4NKs+TKWIhlVx3fv76Q7by4rxqiVCyfDwlce35k1diSaMment4lT3f/6riEQyPTscjZ5ejxnQv+IIY5Z8bcc0a2cpzxrFAZvj4SrFXpE1djwczS83ON guest2@stsid">/home/appu/.ssh/authorized_keys'
+  command 'echo "replace this string with public key">>/home/appu/.ssh/authorized_keys'
 end
 execute 'removing passowrd prompt' do
   command "sed -i  '/PermitEmptyPasswords/c\PermitEmptyPasswords yes' /etc/ssh/sshd_config"
